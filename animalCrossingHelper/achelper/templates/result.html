@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missing Items</title>
+</head>
+<body>
+<h1>Suggestions for items</h1>
+
+{% if available_now %}
+    <ul>
+      {% for item in available_now %}
+        <li>
+          {{ item.name }} — {{ item.start_time|time:"H:i" }} to {{ item.end_time|time:"H:i" }},
+          Location: {{ item.location }}, Shadow: {{ item.shadow_size }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No available items right now.</p>
+  {% endif %}
+
+<a href="{% url 'item_grid' %}">Back to Selection</a>
+</body>
+</html>
